@@ -40,23 +40,30 @@
         <section>
           <section>
             <h3>Open Terrain</h3>
+						<img width="80%" src="images/ned_marin.gif" />
           </section>
 
           <section>
             <h4>About</h4>
             <ul>
-              <li class="fragment fade-up">Supported by a Knight Foundation Grant</li>
-              <li class="fragment fade-up">Sourcing global open terrain data</li>
-              <li class="fragment fade-up">Open source tools for processing data</li>
+              <li class="fragment fade-up">Supported by a Knight Foundation grant</li>
+              <li class="fragment fade-up">Sourcing & validating global open terrain data</li>
+              <li class="fragment fade-up">Creating & documenting open source tools for processing data</li>
             </ul>
           </section>
 
           <section>
-            <p>Outcomes</p>
+            <h4>Outcomes</h4>
             <ul>
-              <li class="fragment fade-up">Style Variants</li>
-              <li class="fragment fade-up">AWS Lambda Tile Generation</li>
+							<li class="fragment fade-up">Mapzen Elevation Data API</li>
+              <li class="fragment fade-up">Map + Hillshade Style Variants</li>
+              <li class="fragment fade-up">AWS Lambda Tiler</li>
             </ul>
+
+						<aside class="notes">
+							- variants possible due to how we separate labels, lines, background into separate tile layers,
+							- makes it easy to add a transparent hillshade layer
+						</aside>
           </section>
 
           <section>
@@ -80,39 +87,87 @@
           </section>
 
           <section>
-            <img src="images/switzerland_after.png" />
+            <img src="images/terrain-classic.png" />
           </section>
+        </section>
+
+				<section>
+					<section>
+						<h3>Terrain Classic</h3>
+						<img src="images/switzerland_after.png" />
+					</section>
+
+					<!-- TO DO: show some before & after images  -->
+				</section>
+
+        <section>
+					<section>
+						<h3>AWS Lambda Tiler</h3>
+
+					</section>
+
+          <section>
+						<h4>The Stack</h4>
+						<ul>
+							<li class="fragment fade-up"><strong>AWS</strong>: Lambda, S3, EC2, API Gateway</li>
+							<li class="fragment fade-up">Rendering scripts, eg: Python with Matplotlib, Rasterio</li>
+							<li class="fragment fade-up">Data source (DEM, Aerial Imagery, Postgres DB)</li>
+						</ul>
+          </section>
+
+					<section>
+						<h4>Benefits</h4>
+						<ul>
+							<li class="fragment fade-up">Cost Efficient</li>
+							<li class="fragment fade-up">No tile server</li>
+							<li class="fragment fade-up">Works well with raster data</li>
+						</ul>
+
+						<aside class="notes">
+							- only paying for what you use
+							- no server maintanence
+							- render aerial imagery, vegetation raster data, or OSM data
+							- process used for open aerial map
+						</aside>
+					</section>
         </section>
 
         <section>
           <section>
-            <h3>Mapzen elevation data API</h3>
+            <h3>Impractical Uses</h3>
+						<img width="60%" src="images/marin-triangles-averaged.gif" />
           </section>
+
+					<section>
+						<img width="80%" src="images/triangulated_terrain_marin.png">
+					</section>
+
+					<section>
+						<img width="80%" src="images/triangulated_terrain_sketch.png" />
+					</section>
+
+					<section>
+						<img src="images/triangulated_terrain_sketch_2.png" />
+					</section>
+
+					<section>
+						<img width="60%" src="images/weird_TIN_seattle.png" />
+					</section>
+
         </section>
 
-        <section>
-          <section>
-            <h3>Terrain Classic</h3>
-          </section>
-        </section>
+				<section>
+					<h2><em>Thank You!</em></h2>
+					<p>Twitter: <a href="https://twitter.com/chrislhenrick" target="_blank">@chrislhenrick</a></p>
+					<p>Email: <a mailto="chrishenrick@gmail.com">chrishenrick [at] gmail</a></p>
+					<p>Website: <a href="http://clhenrick.io" target="_blank">clhenrick.io</a></p>
+				</section>
 
-        <section>
-          <section>
-            <h3>AWS Lambda Tiler</h3>
-          </section>
-        </section>
-
-        <section>
-          <section>
-            <h3>Open Aerial Map</h3>
-          </section>
-        </section>
-
-        <section>
-          <section>
-            <h3>Alan's Experiments</h3>
-          </section>
-        </section>
+				<!-- <section>
+					<section>
+						<h3>Open Aerial Map</h3>
+					</section>
+				</section> -->
 
 			</div> <!-- END SLIDS -->
 
