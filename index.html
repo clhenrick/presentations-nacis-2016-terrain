@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 	<head>
 		<meta charset="utf-8">
 		<title>Practical and Impractical Uses of Terrain Data</title>
@@ -11,8 +10,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css" id="theme">
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -27,9 +24,11 @@
 	</head>
 	<body>
 		<div class="reveal">
+
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
+				<!-- TITLE SLIDE -->
         <section>
           <h1>Practical and Impractical Uses of Terrain Data</h1>
           <h3>Stamen Design</h3>
@@ -37,25 +36,25 @@
           <p>NACIS 2016</p>
         </section>
 
+				<!-- OPEN TERRAIN -->
         <section>
           <section>
-            <h3>Open Terrain</h3>
+            <h3>Open Terrain Project</h3>
 						<img width="80%" src="images/ned_marin.gif" />
           </section>
 
-          <section>
-            <h4>About</h4>
+          <section style="text-align: left;">
+            <h4>About Open Terrain</h4>
             <ul>
-              <li class="fragment fade-up">Supported by a Knight Foundation grant</li>
-              <li class="fragment fade-up">Sourcing & validating global open terrain data</li>
-              <li class="fragment fade-up">Creating & documenting open source tools for processing data</li>
+              <li class="fragment fade-up">Supported by a Knight Foundation Grant</li>
+              <li class="fragment fade-up">Sourcing & Validating Global Open Terrain Data</li>
+              <li class="fragment fade-up">Creating & Documenting Open Source Tools for Processing Data</li>
             </ul>
           </section>
 
-          <section>
-            <h4>Outcomes</h4>
+          <section style="text-align: left;">
+            <h4>Open Terrain Outcomes</h4>
             <ul>
-							<li class="fragment fade-up">Mapzen Elevation Data API</li>
               <li class="fragment fade-up">Map + Hillshade Style Variants</li>
               <li class="fragment fade-up">AWS Lambda Tiler</li>
             </ul>
@@ -66,61 +65,84 @@
 						</aside>
           </section>
 
-          <section>
-            <img src="images/humaniterrain.png" />
-          </section>
+          <section data-background-image="images/humaniterrain.png"></section>
 
-          <section>
-            <img src="images/terrain-toner.png" />
-          </section>
+          <section data-background-image="images/terrain-toner.png"></section>
 
-          <section>
-            <img src="images/terrain-watercolor.png" />
-          </section>
+          <section data-background-image="images/terrain-watercolor.png"></section>
 
-          <section>
-            <img src="images/darkmatter-terrain.jpg" />
-          </section>
+          <section data-background-image="images/darkmatter-terrain.jpg"></section>
 
-          <section>
-            <img src="images/positron-terrain.jpg" />
-          </section>
+          <section data-background-image="images/positron-terrain.jpg"></section>
 
-          <section>
-            <img src="images/terrain-classic.png" />
-          </section>
+          <section data-background-image="images/terrain-classic.png"></section>
+
         </section>
 
+				<!-- TERRAIN CLASSIC -->
 				<section>
 					<section>
 						<h3>Terrain Classic</h3>
 						<img src="images/switzerland_after.png" />
 					</section>
 
+					<section style="text-align: left;">
+						<h4>About Terrain Classic</h4>
+						<ul>
+							<li class="fragment fade-up">Global version of Stamen Terrain</li>
+							<li class="fragment fade-up">Ported to CartoCSS</li>
+							<li class="fragment fade-up">AWS Tiler for OSM, Landcover, & Hillshade</li>
+							<li class="fragment fade-up">Terrain data sourced from Mapzen</li>
+						</ul>
+					</section>
+
+					<section style="text-align: left;">
+						<h4>Terrain Classic Outcomes</h4>
+						<ul>
+							<li class="fragment fade-up">General Purpose Map Style</li>
+							<li class="fragment fade-up">Free, Public Tile Source</li>
+							<li class="fragment fade-up">Iterative Workflow / Easier to Update</li>
+						</ul>
+					</section>
+
+					<section data-background-image="images/terrain01.png"></section>
+
+					<section data-background-image="images/terrain02.png"></section>
+
+					<section data-background-image="images/terrain03.png"></section>
+
+					<section data-background-image="images/terrain04.png"></section>
+
+					<section data-background-image="images/terrain05.png"></section>
+
+					<section data-background-image="images/terrain06.png"></section>
+
 					<!-- TO DO: show some before & after images  -->
 				</section>
 
+				<!-- AWS TILER -->
         <section>
 					<section>
 						<h3>AWS Lambda Tiler</h3>
-
 					</section>
 
-          <section>
-						<h4>The Stack</h4>
+          <section style="text-align: left;">
+						<h4>AWS Lambda Tiler Stack</h4>
 						<ul>
 							<li class="fragment fade-up"><strong>AWS</strong>: Lambda, S3, EC2, API Gateway</li>
-							<li class="fragment fade-up">Rendering scripts, eg: Python with Matplotlib, Rasterio</li>
-							<li class="fragment fade-up">Data source (DEM, Aerial Imagery, Postgres DB)</li>
+							<li class="fragment fade-up"><strong>GDAL</strong>: Overviews, Warped VRTs</li>
+							<li class="fragment fade-up">Python with Matplotlib, Rasterio</li>
+							<li class="fragment fade-up">Docker & Apex.io</li>
+							<li class="fragment fade-up">Data source (DEM, Aerial Imagery, or PostgreSQL)</li>
 						</ul>
           </section>
 
-					<section>
-						<h4>Benefits</h4>
+					<section style="text-align: left;">
+						<h4>AWS Lambda Tiler Benefits</h4>
 						<ul>
 							<li class="fragment fade-up">Cost Efficient</li>
-							<li class="fragment fade-up">No tile server</li>
-							<li class="fragment fade-up">Works well with raster data</li>
+							<li class="fragment fade-up">No Tile Server</li>
+							<li class="fragment fade-up">Works Well With Raster Data</li>
 						</ul>
 
 						<aside class="notes">
@@ -132,51 +154,33 @@
 					</section>
         </section>
 
+				<!-- IMPRACTICAL USES -->
         <section>
           <section>
-            <h3>Impractical Uses</h3>
+            <h3>Impractical Uses of Terrain Data</h3>
 						<img width="60%" src="images/marin-triangles-averaged.gif" />
           </section>
 
-					<section>
-						<img width="80%" src="images/triangulated_terrain_marin.png">
-					</section>
+					<section data-background-image="images/triangulated_terrain_marin.png"></section>
 
-					<section>
-						<img width="80%" src="images/triangulated_terrain_sketch.png" />
-					</section>
+					<section data-background-image="images/triangulated_terrain_sketch.png"></section>
 
-					<section>
-						<img src="images/triangulated_terrain_sketch_2.png" />
-					</section>
+					<section data-background-image="images/triangulated_terrain_sketch_2.png"></section>
 
-					<section>
-						<img width="60%" src="images/weird_TIN_seattle.png" />
-					</section>
+					<section data-background-image="images/weird_TIN_seattle.png"></section>
 
         </section>
 
-				<section>
+				<!-- END -->
+				<section style="text-align: left;">
 					<h2><em>Thank You!</em></h2>
-					<p>Twitter: <a href="https://twitter.com/chrislhenrick" target="_blank">@chrislhenrick</a></p>
-					<p>Email: <a mailto="chrishenrick@gmail.com">chrishenrick [at] gmail</a></p>
-					<p>Website: <a href="http://clhenrick.io" target="_blank">clhenrick.io</a></p>
+					<p>Twitter: <a target='_blank' href="https://twitter.com/chrislhenrick" target="_blank">@chrislhenrick</a></p>
+					<p>Email: <a mailto="chris@stamen.com">chris [at] stamen [dot] com</a></p>
+					<p>Web: <a target='_blank' href="http://stamen.com">Stamen.com</a></p>
+					<p>This Presentation: <a target="_blank" href="http://bit.ly/stamen-terrain-nacis">bit.ly/stamen-terrain-nacis</a></p>
 				</section>
 
-				<!-- <section>
-					<section>
-						<h3>Open Aerial Map</h3>
-					</section>
-				</section> -->
-
-			</div> <!-- END SLIDS -->
-
-      <!-- <ul>
-        <li class="fragment fade-up"></li>
-        <li class="fragment fade-up"></li>
-      </ul> -->
-
-      <!-- <p></p>  -->
+			</div> <!-- END SLIDES -->
 
 		</div>
 		<script src="lib/js/head.min.js"></script>
