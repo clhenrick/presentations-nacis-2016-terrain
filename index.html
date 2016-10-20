@@ -3,13 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Practical and Impractical Uses of Terrain Data</title>
-		<meta name="description" content="Practical and Impractical Uses of Terrain Data">
+		<meta name="description" content="NACIS 2016: Practical and Impractical Uses of Terrain Data">
 		<meta name="author" content="Chris Henrick">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -48,14 +50,15 @@
             <ul>
               <li class="fragment fade-up">Supported by a Knight Foundation Grant</li>
               <li class="fragment fade-up">Sourcing & Validating Global Open Terrain Data</li>
-              <li class="fragment fade-up">Creating & Documenting Open Source Tools for Processing Data</li>
+              <li class="fragment fade-up">Creating & Documenting Open Source Tools for Processing Terrain Data</li>
             </ul>
           </section>
 
           <section style="text-align: left;">
             <h4>Open Terrain Outcomes</h4>
             <ul>
-              <li class="fragment fade-up">Map + Hillshade Style Variants</li>
+              <li class="fragment fade-up"><strong>Tessera</strong> for Map + Hillshade style variants</li>
+							<li class="fragment fade-up"><strong>Terrain Classic</strong> map tiles</li>
               <li class="fragment fade-up">AWS Lambda Tiler</li>
             </ul>
 
@@ -89,10 +92,10 @@
 					<section style="text-align: left;">
 						<h4>About Terrain Classic</h4>
 						<ul>
-							<li class="fragment fade-up">Global version of Stamen Terrain</li>
-							<li class="fragment fade-up">Ported to CartoCSS</li>
+							<li class="fragment fade-up">Global version of Stamen's U.S. Terrain map tiles</li>
+							<li class="fragment fade-up">Ported to CartoCSS from Cascadenik</li>
 							<li class="fragment fade-up">AWS Tiler for OSM, Landcover, & Hillshade</li>
-							<li class="fragment fade-up">Terrain data sourced from Mapzen</li>
+							<li class="fragment fade-up">Terrain data sourced from Mapzen Elevation Data API</li>
 						</ul>
 					</section>
 
@@ -122,18 +125,23 @@
 
 				<!-- AWS TILER -->
         <section>
-					<section>
+					<section style="text-align: left;">
 						<h3>AWS Lambda Tiler</h3>
+						<p class="fragment fade-up">Web Browser Request -> Tile <em>{z}/{x}/{y}</em> URL</p>
+						<p class="fragment fade-up">AWS: Does the Tile Exist?</p>
+						<p class="fragment fade-up">IF TRUE -> Grab from S3 Store</p>
+						<p class="fragment fade-up">ELSE -> Create it & Write to S3 then grab</p>
+						<p class="fragment fade-up">Send back to Web Browser</p>
 					</section>
 
           <section style="text-align: left;">
 						<h4>AWS Lambda Tiler Stack</h4>
 						<ul>
 							<li class="fragment fade-up"><strong>AWS</strong>: Lambda, S3, EC2, API Gateway</li>
-							<li class="fragment fade-up"><strong>GDAL</strong>: Overviews, Warped VRTs</li>
-							<li class="fragment fade-up">Python with Matplotlib, Rasterio</li>
-							<li class="fragment fade-up">Docker & Apex.io</li>
-							<li class="fragment fade-up">Data source (DEM, Aerial Imagery, or PostgreSQL)</li>
+							<li class="fragment fade-up"><strong>GDAL</strong>: Raster Overviews & Warped VRTs</li>
+							<li class="fragment fade-up"><strong>Python</strong>'s Matplotlib & Rasterio</li>
+							<li class="fragment fade-up">Docker & Apex.io (Lambda helpers)</li>
+							<li class="fragment fade-up"><strong>Data</strong> source (DEM, Aerial Imagery, PostGIS, etc.)</li>
 						</ul>
           </section>
 
@@ -141,8 +149,10 @@
 						<h4>AWS Lambda Tiler Benefits</h4>
 						<ul>
 							<li class="fragment fade-up">Cost Efficient</li>
+							<li class="fragment fade-up">You Own Your Tiles</li>
 							<li class="fragment fade-up">No Tile Server</li>
-							<li class="fragment fade-up">Works Well With Raster Data</li>
+							<li class="fragment fade-up">Works Well with Raster Data</li>
+							<li class="fragment fade-up">Can Use Multiple Layers on a Single AWS Setup</li>
 						</ul>
 
 						<aside class="notes">
@@ -151,6 +161,14 @@
 							- render aerial imagery, vegetation raster data, or OSM data
 							- process used for open aerial map
 						</aside>
+					</section>
+
+					<section style="text-align: left;">
+						<h4>AWS Lambda Tiler Downsides</h4>
+						<ul>
+							<li class="fragment fade-up">Set up & AWS configuration can be tricky</li>
+							<li class="fragment fade-up">Initial Tile generation is slow if seeded by users</li>
+						</ul>
 					</section>
         </section>
 
