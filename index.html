@@ -38,6 +38,11 @@
           <p>NACIS 2016</p>
         </section>
 
+				<!-- STAMEN -->
+				<section data-background-color="#fff">
+					<img style="border: none; box-shadow: none;" alt="stamen logo" src="images/stamen.png" />
+				</section>
+
 				<!-- OPEN TERRAIN -->
         <section>
           <section>
@@ -49,17 +54,18 @@
             <h4>About Open Terrain</h4>
             <ul>
               <li class="fragment fade-up">Supported by a Knight Foundation Grant</li>
-              <li class="fragment fade-up">Sourcing & Validating Global Open Terrain Data</li>
-              <li class="fragment fade-up">Creating & Documenting Open Source Tools for Processing Terrain Data</li>
+              <li class="fragment fade-up">Cataloging Global Open Terrain Data</li>
+              <li class="fragment fade-up">Documenting Workflows for Processing Terrain Data</li>
+							<li class="fragment fade-up">Create a global version of Stamen Terrain</li>
             </ul>
           </section>
 
           <section style="text-align: left;">
             <h4>Open Terrain Outcomes</h4>
             <ul>
-              <li class="fragment fade-up"><strong>Tessera</strong> for Map + Hillshade style variants</li>
+              <li class="fragment fade-up">Github Wiki on Open Terrain data sources</li>
 							<li class="fragment fade-up"><strong>Terrain Classic</strong> map tiles</li>
-              <li class="fragment fade-up">AWS Lambda Tiler</li>
+              <li class="fragment fade-up">AWS Tiler</li>
             </ul>
 
 						<aside class="notes">
@@ -94,7 +100,9 @@
 						<ul>
 							<li class="fragment fade-up">Global version of Stamen's U.S. Terrain map tiles</li>
 							<li class="fragment fade-up">Ported to CartoCSS from Cascadenik</li>
-							<li class="fragment fade-up">AWS Tiler for OSM, Landcover, & Hillshade</li>
+							<li class="fragment fade-up">NodeJS, Mapnik, Make, Postgres & PostGIS, Tessera</li>
+							<li class="fragment fade-up">AWS Tiler creates separate tile layers: background, lines, labels, hillshade</li>
+							<li class="fragment fade-up">Main tiles are created by compositing with Mapnik</li>
 							<li class="fragment fade-up">Terrain data sourced from Mapzen Elevation Data API</li>
 						</ul>
 					</section>
@@ -104,7 +112,8 @@
 						<ul>
 							<li class="fragment fade-up">General Purpose Map Style</li>
 							<li class="fragment fade-up">Free, Public Tile Source</li>
-							<li class="fragment fade-up">Iterative Workflow / Easier to Update</li>
+							<li class="fragment fade-up">CartoCSS IS NOT DEAD</li>
+							<li class="fragment fade-up">Shout out to Tom Patterson's <a target="_blank" href="http://www.shadedrelief.com/web_relief/">Web Shaded Relief</a></li>
 						</ul>
 					</section>
 
@@ -126,7 +135,7 @@
 				<!-- AWS TILER -->
         <section>
 					<section style="text-align: left;">
-						<h3>AWS Lambda Tiler</h3>
+						<h3>AWS Tiler</h3>
 						<p class="fragment fade-up">Web Browser Request -> Tile <em>{z}/{x}/{y}</em> URL</p>
 						<p class="fragment fade-up">AWS: Does the Tile Exist?</p>
 						<p class="fragment fade-up">IF TRUE -> Grab from S3 Store</p>
@@ -134,19 +143,26 @@
 						<p class="fragment fade-up">Send back to Web Browser</p>
 					</section>
 
+					<section>
+						<h2>
+							<a target="_blank" href="./example.html">Link to Demo</a>
+						</h2>
+					</section>
+
           <section style="text-align: left;">
-						<h4>AWS Lambda Tiler Stack</h4>
+						<h4>AWS Tiler Stack</h4>
 						<ul>
 							<li class="fragment fade-up"><strong>AWS</strong>: Lambda, S3, EC2, API Gateway</li>
 							<li class="fragment fade-up"><strong>GDAL</strong>: Raster Overviews & Warped VRTs</li>
 							<li class="fragment fade-up"><strong>Python</strong>'s Matplotlib & Rasterio</li>
+							<li class="fragment fade-up"><strong>NodeJS</strong> & <strong>Mapnik</strong></li>
 							<li class="fragment fade-up">Docker & Apex.io (Lambda helpers)</li>
 							<li class="fragment fade-up"><strong>Data</strong> source (DEM, Aerial Imagery, PostGIS, etc.)</li>
 						</ul>
           </section>
 
 					<section style="text-align: left;">
-						<h4>AWS Lambda Tiler Benefits</h4>
+						<h4>AWS Tiler Benefits</h4>
 						<ul>
 							<li class="fragment fade-up">Cost Efficient</li>
 							<li class="fragment fade-up">You Own Your Tiles</li>
@@ -164,10 +180,10 @@
 					</section>
 
 					<section style="text-align: left;">
-						<h4>AWS Lambda Tiler Downsides</h4>
+						<h4>AWS Tiler Caveats</h4>
 						<ul>
 							<li class="fragment fade-up">Set up & AWS configuration can be tricky</li>
-							<li class="fragment fade-up">Initial Tile generation is slow if seeded by users</li>
+							<li class="fragment fade-up">Initial Tile generation is slow</li>
 						</ul>
 					</section>
         </section>
@@ -186,6 +202,10 @@
 					<section data-background-image="images/triangulated_terrain_sketch_2.png"></section>
 
 					<section data-background-image="images/weird_TIN_seattle.png"></section>
+
+					<section data-background-image="images/seth-experiment01.png"></section>
+
+					<section data-background-image="images/seth-experiment02.png"></section>
 
         </section>
 
