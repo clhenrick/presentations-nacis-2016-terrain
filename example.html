@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AWS Tiler Examples</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+	<style>
+		html, body { margin: 0; padding: 0; }
+		#map { position: absolute; top: 0; bottom: 0; left: 0; right: 0;}
+		#zoom { position: absolute; bottom: 10px; left: 10px; z-index: 1000; font-weight: bold;}
+	</style>
+	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<div id="zoom"></div>
+<script>
+	var baseURL = 'http://tiles-mpgranch-test.s3-website-us-east-1.amazonaws.com';
+	var zxy = '{z}/{x}/{y}.png';
+
+	var tileURLs = {};
+	tileURLs.aerial2015 = baseURL + '/2015/' + zxy;
+	tileURLs.aerial2016 = baseURL + '/2016/' + zxy;
+	tileURLs.solarIns = baseURL + '/avg_slr/' + zxy;
+	tileURLs.ndvi2015 = baseURL + '/2015_NDVI/' + zxy;
+
+	var tileLayers = {};
+
+	Object.keys(tileURLs).forEach(function(key) {
+		tileLayers[key] = L.tileLayer(tileURLs[key], {
+			maxZoom: 20,
+			id: key
+		});
+	});
+
+	var map = L.map('map', {
+		maxBounds: [[46.64, -114.06],[46.75, -113.93]],
+		zoom: 13,
+		maxZoom: 20,
+		center: [46.6987, -114.009],
+		scrollWheelZoom: false
+	});
+
+	L.tileLayer('http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg', {
+		maxZoom: 20,
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Map tiles by <a href="http://stamen.com">Stamen Design</a>'
+	}).addTo(map);
+
+	L.control.layers(tileLayers).addTo(map);
+
+	function onMapMove(e) {
+		console.log(e);
+		var z = e.target.getZoom();
+		var el = document.getElementById('zoom');
+		el.innerHTML = '<p>zoom ' + z + '</p>';
+	}
+
+	map.on('load', onMapMove);
+	map.on('moveend', onMapMove);
+
+</script>
+</body>
+</html>
